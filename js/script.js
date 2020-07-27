@@ -4,9 +4,9 @@
 // quali dei numeri da indovinare sono stati individuati.
 
 
-$( document ).ready(function() {
+$(document).ready(function() {
     var numeriPc = [];
-    var numeriUtente= [];
+    var numeriUtente = [];
     var giusti = [];
 
     while (numeriPc.length < 5){
@@ -19,25 +19,37 @@ $( document ).ready(function() {
     alert("ricorda questi numeri " + numeriPc);
     console.log(numeriPc);
 
+    var clock = setInterval(countDown, 1000);
+    var time = 4;
 
-
-    // var clock = setInterval(countDown, 1000);
-    // var time = 3;
+    function countDown(){
+        console.log(time);
+        if (time == 0) {
+            clearInterval(clock);
+                for (var i = 0; i < 5; i++) {
+                numeriUtente.push(parseInt(prompt("inserisci i numeri che ricordi")));
+                }
+                checkLists(numeriPc, numeriUtente, giusti);
+                var punteggio = giusti.length;
+                console.log(numeriUtente);
+                console.log("i numeri che hai ricordato sono i seguenti " + giusti);
+                console.log("hai indovinato " + punteggio + " numeri");
+        }
+        time--;
+    }
     //
-    // function countDown(){
-    //     console.log(time);
-    //     if (time == 0) {
-    //         clearInterval(clock);
-    //         getFive(numeriUtente);
-    //         console.log(numeriUtente);
+    //
+
+    // setTimeout(function(){
+    //     for (var i = 0; i < 5; i++) {
+    //         numeriUtente.push(parseInt(prompt("inserisci i numeri che ricordi")));
     //     }
-    //     time--;
-    // }
-    //
-    // checkLists(numeriPc, numeriUtente, giusti);
-    //
-    // console.log(giusti);
-
+    //     checkLists(numeriPc, numeriUtente, giusti);
+    //     var punteggio = giusti.length;
+    //     console.log(numeriUtente);
+    //     console.log("i numeri che hai ricordato sono i seguenti " + giusti);
+    //     console.log("hai indovinato " + punteggio + " numeri");
+    // }, 4000);
 
 });
 
@@ -58,18 +70,24 @@ function controllo (num, array) {
     return false;
 }
 
-// function getFive(b){
+// function getFive(){
 //     for (var i = 0; i < 5; i++) {
 //         var a = parseInt(prompt("inserisci i numeri che ricordi"));
-//         b.push(a);
-//     }
+        // numeriUtente.push(a);
+    // }
+    // checkLists(numeriPc, numeriUtente, giusti);
+    // console.log(giusti);
 // }
-//
-// function checkLists (arr1, arr2, arr3) {
-//     for (var j = 0; j < arr1.length; j++) {
-//         if (controllo(arr2[j], arr1)) {
-//             arr3.push(arr[j])
-//
-//         }
-//     }
-// }
+
+
+
+
+
+function checkLists (arr1, arr2, arr3) {
+    for (var j = 0; j < arr1.length; j++) {
+        if (controllo(arr2[j], arr1)) {
+            arr3.push(arr2[j])
+
+        }
+    }
+}
