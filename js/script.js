@@ -21,22 +21,22 @@ $( document ).ready(function() {
 
 
 
-    var clock = setInterval(countDown, 1000);
-    var time = 3;
-
-    function countDown(){
-        console.log(time);
-        if (time == 0) {
-            clearInterval(clock);
-            getFive(numeriUtente);
-            console.log(numeriUtente);
-        }
-        time--;
-    }
-
-    checkLists(numeriPc, numeriUtente, giusti);
-
-    console.log(giusti);
+    // var clock = setInterval(countDown, 1000);
+    // var time = 3;
+    //
+    // function countDown(){
+    //     console.log(time);
+    //     if (time == 0) {
+    //         clearInterval(clock);
+    //         getFive(numeriUtente);
+    //         console.log(numeriUtente);
+    //     }
+    //     time--;
+    // }
+    //
+    // checkLists(numeriPc, numeriUtente, giusti);
+    //
+    // console.log(giusti);
 
 
 });
@@ -58,18 +58,18 @@ function controllo (num, array) {
     return false;
 }
 
-function getFive(b){
-    for (var i = 0; i < 5; i++) {
-        var a = parseInt(prompt("inserisci i numeri che ricordi"));
-        b.push(a);
-    }
-}
-
-function checkLists (arr1, arr2, arr3) {
-    for (var j = 0; j < arr1.length; j++) {
-        if (controllo(arr2[j], arr1)) {
-            arr3.push(arr[j])
-
-        }
-    }
-}
+// function getFive(b){
+//     for (var i = 0; i < 5; i++) {
+//         var a = parseInt(prompt("inserisci i numeri che ricordi"));
+//         b.push(a);
+//     }
+// }
+//
+// function checkLists (arr1, arr2, arr3) {
+//     for (var j = 0; j < arr1.length; j++) {
+//         if (controllo(arr2[j], arr1)) {
+//             arr3.push(arr[j])
+//
+//         }
+//     }
+// }
