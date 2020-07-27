@@ -20,7 +20,7 @@ $(document).ready(function() {
     console.log(numeriPc);
 
     var clock = setInterval(countDown, 1000);
-    var time = 3;
+    var time = 30;
 
     function countDown(){
         console.log(time);
@@ -35,7 +35,13 @@ $(document).ready(function() {
                 $(".time").removeClass("flex");
                 $(".time").addClass("none");
                 checkLists(numeriPc, numeriUtente, giusti);
-                var punteggio = giusti.length;
+                var punteggio;
+                if (giusti.length ==0) {
+                    punteggio = "Non hai ricordato nemmeno un numero";
+                }else {
+                    var punteggio = "Hai ricordato " + giusti.length + " numeri" ;
+                }
+
 
                 $(".risultati>.numeri").append("<p>" + numeriUtente + "</p>");
                 $(".risultati>.ricordati").append("<p>" + giusti + "</p>");
@@ -60,8 +66,6 @@ $(document).ready(function() {
     // }, 4000);
 
 });
-
-
 
 function numeriRandom (min, max) {
     return Math.floor(Math.random() * (max - min) ) + min;
