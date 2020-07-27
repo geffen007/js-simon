@@ -20,20 +20,28 @@ $(document).ready(function() {
     console.log(numeriPc);
 
     var clock = setInterval(countDown, 1000);
-    var time = 4;
+    var time = 3;
 
     function countDown(){
         console.log(time);
+        $(".time").removeClass("none");
+        $(".time").addClass("flex");
+        $(".seconds").text(time);
         if (time == 0) {
             clearInterval(clock);
                 for (var i = 0; i < 5; i++) {
                 numeriUtente.push(parseInt(prompt("inserisci i numeri che ricordi")));
                 }
+                $(".time").removeClass("flex");
+                $(".time").addClass("none");
                 checkLists(numeriPc, numeriUtente, giusti);
                 var punteggio = giusti.length;
-                console.log(numeriUtente);
-                console.log("i numeri che hai ricordato sono i seguenti " + giusti);
-                console.log("hai indovinato " + punteggio + " numeri");
+
+                $(".risultati>.numeri").append("<p>" + numeriUtente + "</p>");
+                $(".risultati>.ricordati").append("<p>" + giusti + "</p>");
+                $(".risultati>.punteggio").append("<p>" + punteggio + "</p>");
+                $(".risultati").removeClass("none");
+                $(".risultati").addClass("flex");
         }
         time--;
     }
