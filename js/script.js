@@ -29,9 +29,17 @@ $(document).ready(function() {
         $(".seconds").text(time);
         if (time == 0) {
             clearInterval(clock);
+                // for (var i = 0; i < 5; i++) {
+                // numeriUtente.push(parseInt(prompt("inserisci i numeri che ricordi")));
+                // }
                 for (var i = 0; i < 5; i++) {
-                numeriUtente.push(parseInt(prompt("inserisci i numeri che ricordi")));
+                    var numeroU = prompt("Inserisci i numeri che ricordi");
+                    if (!controllo(numeroU, numeriUtente)) {
+                        numeriUtente.push(numeroU)
+                    }
                 }
+
+
                 $(".time").removeClass("flex");
                 $(".time").addClass("none");
                 checkLists(numeriPc, numeriUtente, giusti);
@@ -41,6 +49,8 @@ $(document).ready(function() {
                 }else {
                     var punteggio = "Hai ricordato " + giusti.length + " numeri" ;
                 }
+
+                
 
 
                 $(".risultati>.numeri").append("<p>" + numeriUtente + "</p>");
@@ -67,11 +77,11 @@ $(document).ready(function() {
 
 });
 
-function numeriRandom (min, max) {
-    return Math.floor(Math.random() * (max - min) ) + min;
+function numeriRandom(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 
-function controllo (num, array) {
+function controllo(num, array) {
     var i = 0;
     while (i < array.length) {
         if (num == array[i]) {
